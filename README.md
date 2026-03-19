@@ -1,6 +1,6 @@
 # Marketing Mix Model: Multi-Channel Budget Optimization
 
-> **Built a Marketing Mix Model with adstock transformations and Hill saturation curves across 5 channels, decomposing revenue contribution and optimizing a $4.5M annual marketing budget to project +$635K incremental revenue lift — with zero additional spend.**
+> **Built a Marketing Mix Model with adstock transformations and Hill saturation curves across 5 channels, decomposing revenue contribution and optimizing a $4.5M annual marketing budget to project +$635K incremental revenue lift with zero additional spend.**
 
 ![Budget Optimization — Scenario Comparison](images/phase6_executive_scenario.png)
 
