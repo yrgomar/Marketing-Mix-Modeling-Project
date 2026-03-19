@@ -1,8 +1,8 @@
-# Marketing Mix Model — Multi-Channel Budget Optimization
+# Marketing Mix Model: Multi-Channel Budget Optimization
 
 > **Built a Marketing Mix Model with adstock transformations and Hill saturation curves across 5 channels, decomposing revenue contribution and optimizing a $4.5M annual marketing budget to project +$635K incremental revenue lift — with zero additional spend.**
 
-![Budget Optimization — Scenario Comparison](phase6_executive_scenario.png)
+![Budget Optimization — Scenario Comparison](images/phase6_executive_scenario.png)
 
 ---
 
@@ -24,21 +24,9 @@
 
 ## Why I Built This
 
-<!-- ✏️ WRITE YOUR OWN 1-2 PARAGRAPHS HERE — this is the "Personal Narrative" section.
-     Recruiters read this to understand YOUR motivation. Make it personal.
-     
-     Prompts to help you write this:
-     - What made you interested in marketing analytics / MMM specifically?
-     - What was challenging about this project that you're proud of solving?
-     - How does this connect to the kind of work you want to do after graduation?
-     
-     Example tone (don't copy this — write your own):
-     "As a CIS and Marketing double-major, I kept hearing that marketing analytics
-     was the bridge between the two. I wanted to build something that proved I could
-     go from raw data to a C-suite recommendation..."
--->
+I was interested in this project because marketing analytics feels like one of the clearest places where business thinking and technical problem-solving actually meet. I did not want to just build something that looked impressive on the surface, I wanted to understand how a model could turn messy channel data into a recommendation that a decision maker could actually use. MMM stood out to me because it goes beyond reporting what happened and tries to explain why it happened, which made it feel much closer to real strategy work.
 
-*[Your personal narrative here — 1-2 paragraphs explaining why you built this project, what motivated you, and how it connects to your career goals.]*
+What I am most proud of is that this project pushed me past just writing code that runs. I had to work through concepts like adstock, saturation, controls, decomposition, and validation, then make sure the model was something I could defend and explain clearly. That is the kind of work I want to do after graduation, using data to solve business problems, communicate insights, and help make better decisions instead of just producing dashboards or surface-level analysis.
 
 ---
 
@@ -50,7 +38,7 @@ Nova DTC Electronics spends **$87,240 per week (~$4.5M/year)** across 5 marketin
 2. **Where are we overspending** past the point of diminishing returns?
 3. **How should we reallocate** to maximize revenue without increasing budget?
 
-Without a model, budget decisions default to intuition and last year's allocation — leaving significant revenue on the table.
+Without a model, budget decisions default to intuition and last year's allocation, leaving significant revenue on the table.
 
 ---
 
@@ -78,7 +66,7 @@ Raw Spend Data → Adstock Transform → Hill Saturation → OLS Regression → 
 - **Geometric adstock** over Weibull: simpler, interpretable, validated against Meta Robyn and Google Meridian docs
 - **Hill saturation** with channel-specific slopes: performance channels (Search, Email) have slope ≤ 1 (concave); brand channels (TV, Social) have slope > 1 (S-curve)
 - **OLS over Bayesian**: appropriate for a synthetic dataset with known ground truth; Bayesian (PyMC-Marketing) would be the next step for real data with uncertainty quantification
-- **Controls matter**: seasonality (r = 0.69 with revenue) and holiday lift (r = 0.66) are the strongest raw correlations — without controlling for them, channel coefficients would be biased
+- **Controls matter**: seasonality (r = 0.69 with revenue) and holiday lift (r = 0.66) are the strongest raw correlations; without controlling for them, channel coefficients would be biased
 
 ### Validation Sources
 
@@ -89,7 +77,7 @@ Parameters were validated against: Meta Robyn documentation/GitHub, Google Merid
 ## Project Architecture
 
 ```
-marketing-mix-model/
+Marketing-Mix-Modeling-Project/
 │
 ├── config.py                          # All model parameters (decay rates, Hill params, spend ranges)
 ├── transforms.py                      # Adstock, saturation, normalization functions
@@ -102,6 +90,13 @@ marketing-mix-model/
 ├── phase5_response_curves.py          # Spend vs. incremental revenue curves
 ├── phase6_budget_optimizer.py         # scipy.optimize budget allocation
 ├── phase6_scenario_comparison.py      # Current vs. Optimal vs. What-If scenarios
+│
+├── images/                            # All chart outputs
+│   ├── phase5_waterfall_chart.png
+│   ├── phase5_response_curves_grid.png
+│   ├── phase5_roi_bar_chart.png
+│   ├── phase6_executive_scenario.png
+│   └── ...
 │
 ├── mmm_dataset.csv                    # Generated dataset (104 rows × 11 columns)
 ├── mmm_dataset_transformed.csv        # With adstock/saturation features (104 × 26 columns)
@@ -130,7 +125,7 @@ marketing-mix-model/
 
 **Target:** Mean weekly revenue = **$301,404** (~$15.7M/year).
 
-![Distribution of Weekly Spend and Revenue](Distribution_Weekly_Spend_ChannelRevenue.png)
+![Distribution of Weekly Spend and Revenue](images/Distribution_Weekly_Spend_Channel+Revenue.png)
 
 ---
 
@@ -180,32 +175,32 @@ The optimizer reallocates the **same $87K weekly budget** to maximize predicted 
 ## Visualizations
 
 ### Revenue Decomposition Waterfall
-![Revenue Decomposition Waterfall](phase5_waterfall_chart.png)
+![Revenue Decomposition Waterfall](images/phase5_waterfall_chart.png)
 
 ### Channel Response Curves
 Each channel's spend-to-revenue relationship. Square markers show current spend levels. Flat regions = diminishing returns.
 
-![Response Curves — Individual Channels](phase5_response_curves_grid.png)
+![Response Curves — Individual Channels](images/phase5_response_curves_grid.png)
 
-![Response Curves — Overlay Comparison](phase5_response_curves_overlay.png)
+![Response Curves — Overlay Comparison](images/phase5_response_curves_overlay.png)
 
 ### ROI Comparison
-![Channel ROI Comparison](phase5_roi_bar_chart.png)
+![Channel ROI Comparison](images/phase5_roi_bar_chart.png)
 
 ### Budget Optimization Scenarios
-![Scenario Comparison — Current vs. Optimal vs. What-If](phase6_executive_scenario.png)
+![Scenario Comparison — Current vs. Optimal vs. What-If](images/phase6_executive_scenario.png)
 
 ### Model Diagnostics
 Actual vs. Predicted revenue tracks closely. Residuals are centered at zero with no systematic pattern. Q-Q plot confirms approximate normality.
 
-![Actual vs Predicted Revenue](phase4_actual_vs_predicted.png)
+![Actual vs Predicted Revenue](images/phase4_actual_vs_predicted.png)
 
-![Residuals vs Fitted](phase4_residuals_vs_fitted.png)
+![Residuals vs Fitted](images/phase4_residuals_vs_fitted.png)
 
 ### Exploratory Data Analysis
-![Time Series — Revenue, Seasonality, and Channel Spend](Time_Series.png)
+![Time Series — Revenue, Seasonality, and Channel Spend](images/Time_Series.png)
 
-![Correlation Matrix](Correlation_Matrix.png)
+![Correlation Matrix](images/Correlation_Matrix.png)
 
 ---
 
@@ -225,8 +220,8 @@ statsmodels
 ### Installation
 
 ```bash
-git clone https://github.com/yrgomar/marketing-mix-model.git
-cd marketing-mix-model
+git clone https://github.com/yrgomar/Marketing-Mix-Modeling-Project.git
+cd Marketing-Mix-Modeling-Project
 pip install -r requirements.txt
 ```
 
@@ -276,23 +271,9 @@ Each script is self-contained and prints results to the console + saves PNG char
 
 ## What I Learned
 
-<!-- ✏️ WRITE YOUR OWN 1-2 PARAGRAPHS HERE — this is where you reflect on what you learned.
-     
-     Prompts to help you write this:
-     - What concept was hardest to understand? How did you break through?
-     - What surprised you about the results?
-     - What would you do differently with real data?
-     - How did this project change how you think about marketing spend?
-     
-     Some specific things you could mention (pick 2-3 that resonate):
-     - The adstock half-life formula and why wrong decay rates cascade into bad recommendations
-     - Why performance channels need concave saturation curves (slope ≤ 1)
-     - How decomposition works — it clicked when you connected it to LP coefficients from COB 291
-     - The gap between "model works" and "model is defensible in an interview"
-     - How seasonality and holidays dominate raw correlations and why controls are essential
--->
+This project changed how I think about marketing spend because it forced me to look past simple correlations and really think about what is driving revenue. The hardest concept for me was adstock, especially the half-life formula and how decay rates affect the whole model. Once I understood that a TV ad can keep influencing sales for weeks while search fades much faster, it clicked for me that using the wrong decay rate can throw off everything and lead to bad recommendations. I was also surprised by how much seasonality and holidays dominated the raw relationships, which showed me why controls are essential if you want to measure marketing honestly.
 
-*[Your reflection here — 1-2 paragraphs about what you learned, what was hard, and what you'd do next.]*
+What made the project feel more real was seeing how decomposition worked after the regression. That was the point where it became personal for me, because it reminded me of ideas from COB 291 and helped me connect the math to an actual business story. With real data, I would spend much more time validating assumptions and checking whether the model is actually defensible, not just technically correct. More than anything, this project made me think about marketing less as which channel looks best, and more as which channel still has room to grow and why.
 
 ---
 
