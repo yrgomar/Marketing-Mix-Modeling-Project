@@ -90,6 +90,7 @@ Marketing-Mix-Modeling-Project/
 ├── phase5_response_curves.py          # Spend vs. incremental revenue curves
 ├── phase6_budget_optimizer.py         # scipy.optimize budget allocation
 ├── phase6_scenario_comparison.py      # Current vs. Optimal vs. What-If scenarios
+├── MMM_Full_Pipeline.ipynb            # Complete notebook (runs top-to-bottom)
 │
 ├── images/                            # All chart outputs
 │   ├── phase5_waterfall_chart.png
@@ -250,7 +251,7 @@ python phase6_budget_optimizer.py
 python phase6_scenario_comparison.py
 ```
 
-Each script is self-contained and prints results to the console + saves PNG charts.
+Or run the complete notebook: `MMM_Full_Pipeline.ipynb`
 
 ---
 
@@ -266,6 +267,7 @@ Each script is self-contained and prints results to the console + saves PNG char
 | `phase4_mmm_regression.py` | OLS regression with diagnostics (residuals, Q-Q, VIF) |
 | `phase5_*.py` | Decomposition waterfall, ROI bar chart, response curves |
 | `phase6_*.py` | Budget optimizer (`scipy.optimize`) and scenario comparison |
+| `MMM_Full_Pipeline.ipynb` | Complete notebook — runs top-to-bottom |
 
 ---
 
